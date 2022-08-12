@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function createData(getData, Name){
+			var j = {
+				type:"line",
+				axisYType: "primary",
+				name: Name,
+				showInLegend: true,
+				markerSize: 0,
+				connectNullData: true,
+				// nullDataLineDashType: "solid",
+				xValueType: "number",
+				lineThickness: 3,
+				dataPoints: getData,				
+			};
+			return j;
+		}
+		var z = [
+		{ x: 486, y: 35.939 },
+		{ x: 522, y: 50.896 },
+		{ x: 558, y: 16.625 },
+		{ x: 594, y: 0.003 },
+		{ x: 630, y: null },
+		{ x: 666, y: null },
+		{ x: 702, y: 23.508 },
+		{ x: 738, y: 18.577 },
+		{ x: 774, y: 15.918 },
+		{ x: 810, y: null }, 
+		{ x: 846, y: 10.314 },
+		{ x: 882, y: 50.574 },
+		{ x: 918, y: 34.422 },
+		{ x: 954, y: 58.576 },
+		{ x: 990, y: 22.342 },
+		{ x: 1026, y: 22.836 },
+		{ x: 1062, y: 53.220 },
+		{ x: 1098, y: null },
+		{ x: 1134, y: 24.596 },
+		{ x: 1170, y: 0.947 },
+		{ x: 1206, y: 2.142 }
+		]
+		var x = [
+		{ x: 486, y: 35.939 },
+		{ x: 522, y: 40.896 },
+		{ x: 558, y: 56.625 },
+		{ x: 594, y: 26.003 },
+		{ x: 630, y: null },
+		{ x: 666, y: null },
+		{ x: 702, y: 23.508 },
+		{ x: 738, y: 18.577 },
+		{ x: 774, y: 15.918 },
+		{ x: 810, y: null }, 
+		{ x: 846, y: 10.314 },
+		{ x: 882, y: 10.574 },
+		{ x: 918, y: 14.422 },
+		{ x: 954, y: 18.576 },
+		{ x: 990, y: 22.342 },
+		{ x: 1026, y: 22.836 },
+		{ x: 1062, y: 23.220 },
+		{ x: 1098, y: 23.594 },
+		{ x: 1134, y: 24.596 },
+		{ x: 1170, y: 31.947 },
+		{ x: 1206, y: 31.142 }
+		]
+		var y = [
+		{ x: 486, y: 32.939 },
+		{ x: 522, y: 45.896 },
+		{ x: 558, y: null },
+		{ x: 594, y: 28.003 },
+		{ x: 630, y: 25.376 },
+		{ x: 666, y: 39.774 },
+		{ x: 702, y: 13.508 },
+		{ x: 738, y: 10.577 },
+		{ x: 774, y: 18.918 },
+		{ x: 810, y: null },
+		{ x: 846, y: 15.314 },
+		{ x: 882, y: 30.574 },
+		{ x: 918, y: 15.422 },
+		{ x: 954, y: 19.576 },
+		{ x: 990, y: 23.342 },
+		{ x: 1026, y: 40.836 },
+		{ x: 1062, y: 29.220 },
+		{ x: 1098, y: 13.594 },
+		{ x: 1134, y: 14.596 },
+		{ x: 1170, y: 38.947 },
+		{ x: 1206, y: 31.142 }
+		]
+		function chartShow(){
+			var chartName;
+			var x = new Array;
+			for (var i = 0; i < arguments.length; i++) {
+				if (i != 0) {
+					console.log(arguments[i]);
+					x.push(arguments[i]);
+				}
+				else{
+					console.log(arguments[0]);
+					chartName = arguments[0];
+				}
+			}
+
+			window.onload = function() {
+
+				var chart = new CanvasJS.Chart(chartName, {
+					animationEnabled: true,
+					title: {
+						text: "Sales Summary"
+					},
+					axisX: {
+						title: "Type Code"
+					},
+					axisY: {
+						title: "Qty",
+						suffix: "",
+						includeZero: true
+					},
+					legend: {
+						cursor: "pointer",
+						verticalAlign: "bottom",
+						horizontalAlign: "center",
+						dockInsidePlotArea: false,
+					},
+					data:x 
+				});
+				chart.render();
+				document.querySelector(".canvasjs-chart-credit").remove();
+			}
+		}
+		// Number of createData() functions will be change.
+		// Adding all the createData() functions, need to call chartShow(){}
+		chartShow("chartContainer", createData(x, 'MyName'), createData(y, 'YourName'), createData(z, 'Dog'));
+
+		$("#chartContainer").find('a').each(function () {
+			$(this).attr('readonly', true);
+		});
+
+	</script>
+</head>
+<body>
+	<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
